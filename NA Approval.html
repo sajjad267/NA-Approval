@@ -1,0 +1,191 @@
+<!-- -------------PDF GENERATEOR --------------- -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.1.223/styles/kendo.common.min.css" />
+<script src="https://kendo.cdn.telerik.com/2017.1.223/js/jszip.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2017.1.223/js/kendo.all.min.js"></script>
+ 
+    <div id="example">
+    <div class="box wide hidden-on-narrow">
+    </div>
+
+    <div class="page-container hidden-on-narrow">
+        <div class="pdf-page size-a4">
+            <page size="A4">
+               
+               <!-- PDF CONTENT START -->
+
+               <div class="elem">
+
+    <div class="heading">
+    <h2 class="top">AginCare Home Care Services, Inc.</h2>
+    <p class="top">TEL: 718-424-4200</p>
+    <h3 class="top">Patient’s Signature Not Applicable (NA) Granted Form</h3>
+    </div>
+    <form id="patientForm">
+        <h3 class="menuHeading">Patient Information</h3>
+        
+        <label for="medicaidID">Medicaid ID:</label>
+        <input type="text" class="typeInput" name="medicaidID" ><br>
+        <label for="quickBaseID">QuickBase ID:</label>
+        <input id="qbID" type="text" class="typeInput" name="quickBaseID" ><br>
+        <label for="patientName">Patient’s Name:</label>
+        <input type="text" class="typeInput" name="patientName" ><br><br>
+        
+        <h3 class="menuHeading">Aide Information</h3>
+        <label for="caregiverName">Caregiver’s Name:</label>
+        <input type="text" class="typeInput" name="caregiverName" >
+
+        <label for="employeeID">Employee ID:</label>
+        <input id="wID" type="text" class="typeInput" name="employeeID" >
+
+        <h3 class="menuHeading">Audit Information</h3>
+        <label for="dateOfVisit">Date Of Visit (MM/DD/YY):</label>
+        <input Id="dt" type="text" class="typeInput" name="dateOfVisit" ><br>
+
+        <label for="reasonOfApproval">Reason of Granting The NA Approval:</label>
+        <textarea id="reasonOfApproval" class="typeInput" name="reasonOfApproval" rows="4" cols="50" ></textarea>
+
+        <label for="attestationNote">Attestation Note:</label><br>
+        <textarea id="attestationNote" class="typeInput" name="attestationNote" rows="4" cols="50"></textarea><br>
+
+    </form>
+
+    <p class="footer">This document is confidential, intended only for official use and may contain information that is privileged or exempt 
+    from disclosure under applicable law. If you are not the authorized personnel, you are notified that the dissemination, 
+    distribution or copying of this document is strictly prohibited.</p>
+
+</div>
+
+               <!-- PDF CONTENT END -->
+
+            </page>
+           
+        </div>
+    </div>
+    
+    <div class="responsive-message"></div>
+  <div class="btn">
+    <button id="pdf-generate">Download</button>
+    <button id="pdf-generate" onclick="composeOutlookEmail()">Compose Email</button>
+  </div>
+    <style>
+        /*
+            Use the DejaVu Sans font for display and embedding in the PDF file.
+            The standard PDF fonts have no support for Unicode characters.
+        */
+        .pdf-page {
+            font-family: "DejaVu Sans", "Arial", sans-serif;
+            
+        }
+    </style>
+
+    <script>
+        // Import DejaVu Sans font for embedding
+
+        // NOTE: Only required if the Kendo UI stylesheets are loaded
+        // from a different origin, e.g. cdn.kendostatic.com
+        kendo.pdf.defineFont({
+            "DejaVu Sans"             : "https://kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans.ttf",
+            "DejaVu Sans|Bold"        : "https://kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
+            "DejaVu Sans|Bold|Italic" : "https://kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+            "DejaVu Sans|Italic"      : "https://kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf"
+        });
+    </script>
+
+    <!-- Load Pako ZLIB library to enable PDF compression -->
+    <!-- <script src="../content/shared/js/pako.min.js"></script> -->
+
+    <script>
+      function getPDF(selector) {
+        kendo.drawing.drawDOM($(selector)).then(function(group){
+          kendo.drawing.pdf.saveAs(group, 'testing.pdf');
+        });
+      }
+      function composeOutlookEmail() {
+            const to = "payroll@canthomecare.com";
+            const cc = "Israt.jahan@candthomecare.com";
+            const subject = "QB: "+ document.getElementById("qbID").value + " / " + document.getElementById("wID").value + " / "  + "Regarding NA approval for the DOS: " + document.getElementById("dt").value;
+            const body = "Hope this email finds you well.\n\n" + document.getElementById("reasonOfApproval").value + "\n\nIt would be really great if you could verify the TS with NA approval.";
+
+            // Construct the mailto URL
+            const mailtoUrl = `mailto:${to}?cc=${cc}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            QB: 5896 // Regarding NA approval.
+            // Open the mail client
+            window.location.href = mailtoUrl;
+        }
+    </script>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+    body {
+          font-family: 'Montserrat', sans-serif;
+    }
+    page[size="A4"] {  
+      width: 790px;
+      height: 1000px; 
+    }
+    page {
+      background: white; 
+      display: block;
+      margin: 0 auto;
+    }
+
+   .elem {
+        
+            padding: 10px 10px 0px 15px;
+            border: 2px solid rgb(134, 125, 125);
+            margin: 10px 2px 10px 2px;
+            border-radius: 4px;
+            
+        }
+    .heading {
+            text-align: center;
+            padding: 10px 10px 10px 10px;
+            margin: 10px 5px 30px 5px;
+            background-image: linear-gradient(to bottom right, rgb(153, 193, 229), rgb(245, 238, 238));  
+            /* background-color: rgb(209, 218, 223); */
+        }
+    
+    .footer {
+        text-align: center;
+            padding: 10px 10px 10px 10px;
+            margin: 10px 5px 30px 5px;
+    }
+
+        .typeInput {
+            width: 100%;
+            font-size: 18px;
+        }
+        #patientForm {
+            text-align: start;
+        }
+        #pdf-generate {
+            padding: 8px 10px;
+            font-size: small;
+            border-radius: 4px;
+        }
+        #pdf-generate:hover {
+            background-color: rgb(58, 128, 172);
+            
+        }
+
+        .top {
+            margin: 7px 0px;
+        }
+        #attestationNote, #reasonOfApproval {
+            padding: 0px 10px;
+            width: 100%;
+        }
+
+
+</style>
+
+</div>
+
+<script type="text/javascript">
+       $('#pdf-generate').click(function(){
+         getPDF('.pdf-page');
+       })
+</script>
