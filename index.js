@@ -12,12 +12,12 @@
 
         function getPDF(selector) {
             kendo.drawing.drawDOM($(selector)).then(function(group){
-              kendo.drawing.pdf.saveAs(group, 'NA_Approval.pdf');
+              kendo.drawing.pdf.saveAs(group, 'NA_Approval_'+ document.getElementById("qbID").value +'_' + document.getElementById("dt").value +'.pdf');
             });
           }
           function composeOutlookEmail() {
-                const to = "payroll@canthomecare.com";
-                const cc = "Israt.jahan@candthomecare.com";
+                const to = "ahmad.abdullah.patwari@candthomecare.com";
+                const cc = "israt.jahan@candthomecare.com";
                 const subject = "QB: "+ document.getElementById("qbID").value + " / " + document.getElementById("wID").value + " / "  + "Regarding NA approval for the DOS: " + document.getElementById("dt").value;
                 const body = "Hope this email finds you well.\n\n" + document.getElementById("reasonOfApproval").value + "\n\nIt would be really great if you could verify the TS with NA approval.";
     
