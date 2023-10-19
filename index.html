@@ -23,9 +23,14 @@
                <div class="elem">
 
     <div class="heading">
+    <div class="logo">
+        <img src="alogo.png" >
+    </div>
+    <div class="text">
     <h2 class="top">AginCare Home Care Services, Inc.</h2>
     <p class="top">TEL: 718-424-4200</p>
     <h3 class="top">Patient’s Signature Not Applicable (NA) Granted Form</h3>
+    </div>
     </div>
     <form id="patientForm">
         <h3 class="menuHeading">Patient Information</h3>
@@ -45,14 +50,14 @@
         <input id="wID" type="text" class="typeInput" name="employeeID" >
 
         <h3 class="menuHeading">Audit Information</h3>
-        <label for="dateOfVisit">Date Of Visit (MM/DD/YY):</label>
+        <label for="dateOfVisit">Date Of Visit (MM/DD/YYYY):</label>
         <input Id="dt" type="text" class="typeInput" name="dateOfVisit" ><br>
 
         <label for="reasonOfApproval">Reason of Granting The NA Approval:</label>
-        <textarea id="reasonOfApproval" class="typeInput" name="reasonOfApproval" rows="4" cols="50" ></textarea>
+        <textarea id="reasonOfApproval" type="text" class="typeInput" name="reasonOfApproval" rows="3" ></textarea>
 
         <label for="attestationNote">Attestation Note:</label><br>
-        <textarea id="attestationNote" class="typeInput" name="attestationNote" rows="4" cols="50"></textarea><br>
+        <textarea id="attestationNote" type="text" class="typeInput" name="attestationNote" rows="5"></textarea><br>
 
     </form>
 
@@ -77,7 +82,6 @@
 
     <!-- Load Pako ZLIB library to enable PDF compression -->
     <!-- <script src="../content/shared/js/pako.min.js"></script> -->
-
 
 </div>
 
