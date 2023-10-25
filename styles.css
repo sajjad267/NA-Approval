@@ -7,6 +7,12 @@
     
 }
 
+#example{
+    display: flex;
+}
+
+
+
 * {
     box-sizing: border-box;
 }
@@ -30,7 +36,7 @@ label {
 
 .elem {
         padding: 10px 10px 0px 15px;
-        border: 2px solid rgb(134, 125, 125);
+        border: 2px solid rgb(163, 157, 157);
         margin: 10px 2px 10px 2px;
         border-radius: 4px;
         
@@ -43,16 +49,12 @@ label {
 .text  {
         text-align: center;
         padding: 30px 0px 0px 5px;
-        /* margin: 10px 0px 0px 15px; */
-        /* background-color: bisque; */
 }
 
 
 .logo {
    align-items: center;
    padding: 8px 4px 10px 10px;
-   /* margin: 10px 10px 10px 10px; */
-   /* background-color: rgb(148, 116, 55); */
 }
 
 .logo img {
@@ -67,10 +69,44 @@ label {
         margin: 10px 5px 30px 5px;
 }
 
-    .typeInput {
+.datepicker {
+    width: 70%;
+    padding: 4px 3px;
+    font-size: 18px;
+    border: 1px solid rgb(201, 195, 195);
+}
+
+.datelabel{
+    width: 30%;
+    padding: 4px 0px;
+}
+
+.datediv {
+    display: flex;
+}
+
+.resondiv{
+    display: flex;
+    margin: 10px 0px;
+}
+
+.reasonlable{
+    width: 40%;
+    padding: 4px 0px;
+}
+
+#reason {
+    cursor: pointer;
+    width: 60%;
+    font-size: 18px;
+    border: 1px solid rgb(201, 195, 195);
+} 
+
+.typeInput {
         width: 100%;
         font-size: 18px;
-        border-color: rgb(109, 104, 104);
+        border: 1px solid rgb(201, 195, 195);
+        padding: 3px 3px;
     }
     #patientForm {
         margin-top: 10px;
@@ -82,15 +118,41 @@ label {
         border-radius: 4px;
     }
     #pdf-generate:hover {
-        background-color: rgb(58, 128, 172);
+        background-color: rgb(187, 220, 250);
+    }
+
+    .btn {
+        margin: 10px;
+        width: 100%;
+    }
+
+    .or{
+        text-align: center;
+        margin: 70px 0px;
         
+    }
+
+    .emailPur {
+        display: flex;
+        display: none;
+    }
+
+    .btnDownload, .btnCompose {
+     cursor: pointer;
+     width: 100%;
+     margin: 5px 0px;
+     padding: 20px 10px;
+     font-size: 18px;
+     font-weight: 700;
+     color: rgb(0, 0, 0);
+     border-radius: 5px;
     }
 
     .top {
         margin: 7px 0px;
     }
     #attestationNote, #reasonOfApproval {
-        padding: 0px 10px 0px 0px;
+        padding: 0px 10px 0px 5px;
         margin: 0px 10px 0px 0px;
         width: 758px;
         font-family: "DejaVu Sans", "Arial", sans-serif;
@@ -103,5 +165,36 @@ label {
         */
         .pdf-page {
             font-family: "DejaVu Sans", "Arial", sans-serif;
+            margin: 0px 30px;
             
         }
+
+        .cpyclick {
+            cursor: pointer;
+            transition: font-size 0.3s, color 0.3s; 
+             padding: 0px 0px 10px 10px; 
+        }
+        
+        .cpyclick:hover {
+            font-size: 16px; 
+            color: blue; /* Change text color to blue on hover */
+        }
+        
+       
+
+        #TO {
+            cursor: pointer; /* Show a pointer cursor on hover */
+        }
+        
+        #TO:hover::before {
+            content: attr(title); /* Display the hover message as a pseudo-element before the text */
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            left: -5px;
+            top: -25px;
+        }
+        
