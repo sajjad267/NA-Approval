@@ -11,16 +11,9 @@
 <body>
     
 <div id="example">
-    <!-- <div class="box wide hidden-on-narrow"></div> -->
-
-    <!-- <div class="page-container hidden-on-narrow"> -->
         <div class="pdf-page size-a4">
             <page size="A4">
-               
-               <!-- PDF CONTENT START -->
-
                <div class="elem">
-
                 <div class="heading">
                 <div class="logo">
                     <img src="alogo.png" >
@@ -33,79 +26,60 @@
                 </div>
                 <form id="patientForm">
                     <h3 class="menuHeading">Patient Information</h3>
-                    
                     <label for="medicaidID">Medicaid ID:</label>
-                    <input type="text" class="typeInput" name="medicaidID" ><br>
+                    <input type="text" class="typeInput" name="medicaidID" required><br>
                     <label for="quickBaseID">QuickBase ID:</label>
-                    <input id="qbID" type="text" class="typeInput" name="quickBaseID" ><br>
+                    <input id="qbID" type="text" class="typeInput" name="quickBaseID" required><br>
                     <label for="patientName">Patient’s Name:</label>
-                    <input type="text" class="typeInput" name="patientName" ><br><br>
-                    
+                    <input type="text" class="typeInput" name="patientName" required><br><br>
                     <h3 class="menuHeading">Aide Information</h3>
                     <label for="caregiverName">Caregiver’s Name:</label>
-                    <input type="text" class="typeInput" name="caregiverName" >
+                    <input type="text" class="typeInput" name="caregiverName" required>
                     <label for="employeeID">Employee ID:</label>
-                    <input id="wID" type="text" class="typeInput" name="employeeID" ><br><br>
-
+                    <input id="wID" type="text" class="typeInput" name="employeeID" required><br><br>
                     <h3 class="menuHeading">Audit Information</h3>
                   <div class="datediv">
                     <label for="dateOfVisit" class="datelabel" >Date Of Visit (MM/DD/YYYY):</label>
-                    <input Id="dt" type="text" class="datepicker" name="dateOfVisit" ><br>
+                    <!-- <input id="dt" type="text" class="datepicker" name="dateOfVisit" oninput="autoSeparateDate(this)" maxlength="5" required><br> -->
+                    <input id="dt" type="text" class="datepicker" name="dateOfVisit" oninput="autoSeparateDate(this)" maxlength="10" required><br>
                   </div>
-
                   <div class="resondiv">
                     <label for="reasonOfApproval" class="reasonlable">Reason of Granting The NA Approval:</label>
                     <select id="reason" name="reason" required="">
                       <option value=" Temporality covered case.">Temporality covered case</option>
                       <option value=" Not returning longer.">Not returning longer</option>
                       <option value=" Patient is blind.">Patient is blind</option>
-                      <option value=" PT is disable.">PT is disable</option>
-                      <option value=" PT Hospitalized.">PT Hospitalized</option>
-                      <option value=" PT passed away.">PT passed away</option>
+                      <option value=" Patient is disable.">Patient is disable</option>
+                      <option value=" Patient Hospitalized.">Patient Hospitalized</option>
+                      <option value=" Patient passed away.">Patient passed away</option>
                       <option value=" No access to Patient's home.">No access to Patient's home</option>
                   </select><br>
                 </div>
-
                     <label for="attestationNote">Attestation Note:</label><br>
-                    <textarea id="attestationNote" type="text" class="typeInputf" name="attestationNote" rows="7"></textarea><br>
-
+                    <textarea id="attestationNote" type="text" class="typeInputf" name="attestationNote" rows="7" required></textarea><br>
                 </form>
-
                 <p class="footer">This document is confidential, intended only for official use and may contain information that is privileged or exempt 
                 from disclosure under applicable law. If you are not the authorized personnel, you are notified that the dissemination, 
                 distribution or copying of this document is strictly prohibited.</p>
-
             </div>
-
-               <!-- PDF CONTENT END -->
             </page>
-           
-        <!-- </div> -->
-
-    
-    
-    <!-- <div class="responsive-message"></div> -->
-        
 </div>
-        <div class="btn">
-          <button id="pdf-generate" class="btnDownload">Download Form</button>
-          <button id="pdf-generate" class="btnCompose" onclick="composeOutlookEmail()">Auto Compose Email</button>
-          <h3 class="or">OR</h3>
-          <div class="emailPur"><h4>To:</h4><h4 class="cpyclick" id="TO"></h4></div>
-          <div class="emailPur"><h4>CC:</h4><h4 class="cpyclick" id="Cc"></h4></div>
-          <div class="emailPur"><h4>Sub:</h4><h4 class="cpyclick" id="sub"></h4></div>
-          <div class="emailPur"><h4>Email:</h4><textarea id="ebody" type="text" class="cpyclick" name="body" cols="70" rows="7" readonly></textarea></div>
-        </div>
-    <!-- Load Pako ZLIB library to enable PDF compression -->
-    <!-- <script src="../content/shared/js/pako.min.js"></script> -->
-
+      <div class="control">
+          <div class="cntPanel">CONTROL PANEL</div>
+          <div class="btn">
+            <button id="pdf-generate" onclick="validateAndDownloadEmail()">Download Form</button>
+            <button id="pdf-generate" onclick="validateAndComposeEmail()">Auto Compose Email</button>
+          </div>
+          <h3 class="or">OR COPY FROM BELOW</h3>
+          <div class="emailDetail">
+            <div class="emailPur"><h4>To:</h4><h4 class="cpyclick" id="TO" onclick="showCustomNotification('Text Copied!',2000)"></h4></div>
+            <div class="emailPur"><h4>CC:</h4><h4 class="cpyclick" id="Cc" onclick="showCustomNotification('Text Copied!',2000)"></h4></div>
+            <div class="emailPur"><h4>Sub:</h4><h4 class="cpyclick" id="sub" onclick="showCustomNotification('Text Copied!',2000)"></h4></div>
+            <div class="emailPur"><h4>Email:</h4><textarea id="ebody" type="text" class="cpyclick" name="body" cols="70" rows="7" readonly onclick="showCustomNotification('Text Copied!',2000)"></textarea></div>
+          </div>
+      </div>
+      <div id="custom-notification" class="hidden">Text Copied!</div>
 </div>
-
-<script type="text/javascript">
-       $('#pdf-generate').click(function(){
-         getPDF('.pdf-page');
-       })
-</script>
 <script src="index.js"></script>
 </body>
 </html>
