@@ -1,18 +1,10 @@
-/*
-    Use the DejaVu Sans font for display and embedding in the PDF file.
-    The standard PDF fonts have no support for Unicode characters.
-*/
 .pdf-page {
     font-family: "DejaVu Sans", "Arial", sans-serif;
-    
 }
 
 #example{
     display: flex;
 }
-
-
-
 * {
     box-sizing: border-box;
 }
@@ -74,6 +66,7 @@ label {
     padding: 4px 3px;
     font-size: 18px;
     border: 1px solid rgb(201, 195, 195);
+    font-weight: 500;    
 }
 
 .datelabel{
@@ -113,22 +106,54 @@ label {
         text-align: start;
     }
     #pdf-generate {
-        padding: 8px 10px;
-        font-size: small;
+        cursor: pointer;
+        width: 100%;
+        margin: 5px 0px;
+        padding: 10px 10px;
+        font-size: medium;
         border-radius: 4px;
     }
     #pdf-generate:hover {
-        background-color: rgb(187, 220, 250);
+        background-color: rgb(13, 36, 58);
+        color: white;
     }
 
-    .btn {
-        margin: 10px;
+    .control {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(231, 243, 248);
+        border: 1px solid gray;
+        border-radius: 10px;
+        margin: 12px 15px;
         width: 100%;
     }
+    
+    .btn {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        width: 95%;
+        border-radius: 5px;
+        border: 1px solid gray;
+        background-color: aliceblue;
+        margin: 15px auto; /* Horizontally center the content */
+    }
+    .cntPanel{
+        text-align: center;
+        padding: 20px;
+        font-size: 20px;
+        font-weight: 600;
+        border-radius: 10px 10px 0px 0px;
+        border: 1px solid gray;
+        background-color: rgb(13, 36, 58);
+        color: white;
+    }
+
 
     .or{
         text-align: center;
         margin: 70px 0px;
+        color: rgb(78, 76, 76);
         
     }
 
@@ -137,32 +162,33 @@ label {
         display: none;
     }
 
-    .btnDownload, .btnCompose {
-     cursor: pointer;
-     width: 100%;
-     margin: 5px 0px;
-     padding: 20px 10px;
-     font-size: 18px;
-     font-weight: 700;
-     color: rgb(0, 0, 0);
-     border-radius: 5px;
+    .emailDetail{
+        display: flex;
+        flex-direction: column;
+        padding: 10px 10px;
+        margin: 35px auto;
+        width: 95%;
+        border-radius: 5px;
+        border: 1px solid gray;
+        background-color: aliceblue;
     }
-
     .top {
         margin: 7px 0px;
     }
-    #attestationNote, #reasonOfApproval {
+    #attestationNote {
         padding: 0px 10px 0px 5px;
         margin: 0px 10px 0px 0px;
         width: 758px;
         font-family: "DejaVu Sans", "Arial", sans-serif;
         font-size: medium;
     }
-
-    /*
-            Use the DejaVu Sans font for display and embedding in the PDF file.
-            The standard PDF fonts have no support for Unicode characters.
-        */
+    #dt {
+        /* padding: 0px 10px 0px 5px; */
+        /* margin: 0px 10px 0px 0px; */
+        /* width: 758px; */
+        font-family: "DejaVu Sans", "Arial", sans-serif;
+        font-size: medium;
+    }
         .pdf-page {
             font-family: "DejaVu Sans", "Arial", sans-serif;
             margin: 0px 30px;
@@ -176,8 +202,9 @@ label {
         }
         
         .cpyclick:hover {
-            font-size: 16px; 
-            color: blue; /* Change text color to blue on hover */
+            
+            background-color:  rgb(13, 36, 58);
+            color: white;
         }
         
        
@@ -185,7 +212,10 @@ label {
         #TO {
             cursor: pointer; /* Show a pointer cursor on hover */
         }
-        
+
+        #ebody{
+            font-weight: 700;
+        }
         #TO:hover::before {
             content: attr(title); /* Display the hover message as a pseudo-element before the text */
             position: absolute;
@@ -197,4 +227,15 @@ label {
             left: -5px;
             top: -25px;
         }
-        
+        #custom-notification {
+            display: none;
+            position: fixed;
+            text-align: center;
+            top: 0; /* Position at the top */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            background-color: maroon;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
