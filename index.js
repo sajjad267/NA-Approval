@@ -6,18 +6,18 @@ kendo.pdf.defineFont({
 });
 const to = "payroll@canthomecare.com";
 const cc = "israt.jahan@candthomecare.com";
-function autoSeparateDate(input) {
-  let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+// function autoSeparateDate(input) {
+//   let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
 
-  if (value.length >= 4) {
-      // Reformat the value to include "mm/dd/yyyy" format
-      value = value.slice(0, 2) + '/' + value.slice(2) + '/2023';
-      if (value.length > 10) {
-          value = value.slice(0, 10);
-      }
-  }
-  input.value = value;
-}
+//   if (value.length >= 6) {
+//       // Reformat the value to include "mm/dd/yyyy" format
+//       value = value.slice(0, 2) + '/' + value.slice(0,2) + '/' +'20' +value.slice(0,2);
+//       if (value.length > 10) {
+//           value = value.slice(0, 10);
+//       }
+//   }
+//   input.value = value;
+// }
 function getPDF(selector) {
   kendo.drawing.drawDOM($(selector)).then(function (group) {
     kendo.drawing.pdf.saveAs(group, 'NA_Approval_' + document.getElementById("qbID").value + '_' + document.getElementById("dt").value + '.pdf');
